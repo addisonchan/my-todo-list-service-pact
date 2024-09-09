@@ -2,10 +2,17 @@
 
 A contract between a todo app frontend and backend in [open API specification yaml](./openapi.yaml). The purpose is enabling concorrent and independent frontend and backend development.
 
+## Overall Tech Design
+
+This diagram illustrates the overall tech design of the todo app, showcasing the interaction between the frontend and backend components.
+
+![Tech Design](./my_todo_app_tech_design.jpg)
+
+
 ## The Corresponding Repos
 
-- Front End: [My Todo List Frontend](https://github.com/addisonchan/my-todo-list-frontend)
-- Back End: [My Todo List Backend](https://github.com/addisonchan/my-todo-list-backend)
+- React Front End: [My Todo List Frontend](https://github.com/addisonchan/my-todo-list-frontend)
+- Expressjs and Postgresql DB Back End: [My Todo List Backend](https://github.com/addisonchan/my-todo-list-backend)
 
 ## Swagger Mock Service and Doc
 
