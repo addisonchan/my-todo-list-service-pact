@@ -4,10 +4,8 @@ A contract between a todo app frontend and backend in [open API specification ya
 
 ## Overall Tech Design
 
-This diagram illustrates the overall tech design of the todo app, showcasing the interaction between the frontend and backend components.
-
-![Tech Design](./my_todo_app_tech_design.jpg)
-
+This diagram illustrates the overall tech design of the todo app, showcasing the interaction between the frontend and backend components.  
+![Tech Design](./my_todo_app_tech_design.jpg)  
 
 ## The Corresponding Repos
 
