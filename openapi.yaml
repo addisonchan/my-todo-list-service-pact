@@ -1,0 +1,133 @@
+openapi: 3.0.0
+info:
+  title: Todo List API
+  description: This is a API service for a todo list web application
+  contact:
+    email: addisochan@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - url: https://virtserver.swaggerhub.com/addisochan/todo-list-services/0.0.0
+    description: SwaggerHub API Auto Mocking
+paths:
+  /todos:
+    get:
+      summary: Get all todos
+      description: Returns all todos in the system
+      operationId: getAllTodos
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TodoItem'
+        '400':
+          description: Bad request
+      x-swagger-router-controller: GetTodos
+    post:
+      summary: Add a new todo
+      description: Add a new todo to the system
+      operationId: addTodo
+      requestBody:
+        description: Todo object that needs to be added to the system
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoItem'
+      responses:
+        '201':
+          description: Todo created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoItem'
+        '400':
+          description: Invalid input
+      x-swagger-router-controller: AddTodo
+  /todos/{id}:
+    put:
+      summary: Update an existing todo
+      description: Update an existing todo by id
+      operationId: updateTodo
+      parameters:
+        - name: id
+          in: path
+          description: ID of todo that needs to be updated
+          required: true
+          schema:
+            type: string
+            example: V1StGXR8_Z5jdHi6B-myT
+      requestBody:
+        description: Todo object that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                isDone:
+                  type: boolean
+              example:
+                text: Something else to do
+                isDone: true
+              x-content-type: application/json
+      responses:
+        '200':
+          description: Todo updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoItem'
+        '400':
+          description: Invalid input
+        '404':
+          description: Todo not found
+      x-swagger-router-controller: UpdateTodo
+    delete:
+      summary: Delete a todo
+      description: Delete a todo by id
+      operationId: deleteTodo
+      parameters:
+        - name: id
+          in: path
+          description: ID of todo that needs to be deleted
+          required: true
+          schema:
+            type: string
+            example: V1StGXR8_Z5jdHi6B-myT
+      responses:
+        '204':
+          description: Todo deleted
+        '400':
+          description: Invalid input
+        '404':
+          description: Todo not found
+      x-swagger-router-controller: DeleteTodo
+components:
+  schemas:
+    TodoItem:
+      required:
+        - id
+        - text
+        - isDone
+      type: object
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        isDone:
+          type: boolean
+      example:
+        id: V1StGXR8_Z5jdHi6B-myT
+        text: Something to do
+        isDone: false
